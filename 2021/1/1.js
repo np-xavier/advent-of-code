@@ -38,8 +38,7 @@ function countThreeWindowIncreases(numbers) {
     }
     return count;
 }
-const file = fs.readFileSync('./2021/1/input.txt', 'utf8').toString();
-const nums = file.split("\n").map(Number);
+const nums = fs.readFileSync('./2021/1/input.txt', 'utf8').toString().split("\n").map(Number);
 console.log(countIncreases(nums));
 console.log(countThreeWindowIncreases(nums));
 //# sourceMappingURL=1.js.map
