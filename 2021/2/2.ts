@@ -46,4 +46,5 @@ function getPosition2(positions: string[]) : number {
 }
 
 const nums = fs.readFileSync('./2021/1/input.txt','utf8').toString().split("\n");
+console.log(getPosition(nums));
 console.log(getPosition2(nums));

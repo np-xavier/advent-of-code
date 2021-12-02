@@ -16,6 +16,5 @@ function getSum(nums: number[], total: number): number {
     return match;
 }
 
-const file = fs.readFileSync('./2020/1/input.txt','utf8').toString();
-const nums = file.split("\n").map(Number);
+const nums = fs.readFileSync('./2020/1/input.txt','utf8').toString().split("\n").map(Number);;
 console.log(getSum(nums, 2020));
