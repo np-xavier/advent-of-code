@@ -1,48 +1,48 @@
 import * as fs from 'fs';
 
-function getPosition(positions: string[]) : number {
-    let pos = [0, 0, 0];
+function getPosition(instructions: string[]) : number {
+    let position = [0, 0, 0];
 
-    for (let i = 0; i < positions.length; i++) {
-        let directions = positions[i].split(' ');
+    for (let instruct of instructions) {
+        let directions = instruct.split(' ');
 
         switch (directions[0]) {
             case 'forward':
-                pos[0] = pos[0] + Number(directions[1]);
+                position[0] += Number(directions[1]);
                 break;
             case 'down':
-                pos[1] = pos[1] + Number(directions[1]);
+                position[1] += Number(directions[1]);
                 break;
             case 'up':
-                pos[1] = pos[1] - Number(directions[1]);
+                position[1] -= Number(directions[1]);
                 break;
         }
-    } 
+    }
 
-    return pos[0] * pos[1];
+    return position[0] * position[1];
 }
 
-function getPosition2(positions: string[]) : number {
-    let pos = [0, 0, 0];
+function getPosition2(instructions: string[]) : number {
+    let position = [0, 0, 0];
 
-    for (let i = 0; i < positions.length; i++) {
-        let directions = positions[i].split(' ');
+    for (let instruct of instructions) {
+        let directions = instruct.split(' ');
 
         switch (directions[0]) {
             case 'forward':
-                pos[0] = pos[0] + Number(directions[1]);
-                pos[1] = pos[1] + pos[2] * Number(directions[1]);
+                position[0] += Number(directions[1]);
+                position[1] += position[2] * Number(directions[1]);
                 break;
             case 'down':
-                pos[2] += Number(directions[1]);
+                position[2] += Number(directions[1]);
                 break;
             case 'up':
-                pos[2] -= Number(directions[1]);
+                position[2] -= Number(directions[1]);
                 break;
         }
     } 
 
-    return pos[0] * pos[1];
+    return position[0] * position[1];
 }
 
 const nums = fs.readFileSync('./2021/2/input.txt','utf8').toString().split("\n");
