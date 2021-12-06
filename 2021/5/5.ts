@@ -31,7 +31,7 @@ function drawLine(x0, y0, x1, y1, plane) {
     return plane;
 }
 
-function getOverlaps(coordinates: number[][][], diagonal: boolean) {
+function plotSolution(coordinates: number[][][], diagonal: boolean) {
     let plane = Array.from(new Array(1000), () => Array.from(new Array(1000), () => '.' ));
 
     if (!diagonal) {
@@ -65,5 +65,5 @@ function countOverlaps(plane: string[][]) {
 
 const data = fs.readFileSync('./2021/5/input.txt','utf8').toString().split("\n").map(e => e.split(' -> '));
 let coords = data.map(e => e.map(f => parseCoordinate(f)));
-let result = getOverlaps(coords, true);
+let result = plotSolution(coords, true);
 console.log(countOverlaps(result));
