@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 
 function getStateAfterNDays(initialState: number[], days: number): number {
-    const count = new Array(9);
+    const count = new Array(9).fill(0);
     count.fill(0);
     initialState.forEach((i) => count[i]++);
   
