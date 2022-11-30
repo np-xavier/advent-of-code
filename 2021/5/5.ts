@@ -4,7 +4,7 @@ function parseCoordinate(coordinate: string) : number[] {
     return coordinate.split(',').map(e => parseInt(e));
 }
 
-function drawLine(x0, y0, x1, y1, plane) {
+function drawLine(x0: number, y0: number, x1: number, y1: number, plane: Array<Array<string>>) {
     let dx = Math.abs(x1 - x0);
     let dy = Math.abs(y1 - y0);
     let sx = (x0 < x1) ? 1 : -1;
