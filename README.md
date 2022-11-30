@@ -8,4 +8,4 @@ Run `npx tsc` from the root folder to compile your `.ts` files to `.js` (see `ts
 
 # Run the script
 
-Run `node ../location-of-script/foo.js` from the root folder to execute a particular script
+Run `node ./20XX/<number>/<number>.js` from the root folder to execute a particular script
