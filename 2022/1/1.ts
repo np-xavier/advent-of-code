@@ -1,23 +1,23 @@
 import * as fs from 'fs';
 
-// Thoughts - bestTotals grows into a large array as the file size increases - can we reduce?
 function getBestTotals(calorieTotals: Array<string>) {
-    let curTotal = 0, bestTotals = [];
+    let currentTotal = 0, bestTotals: Array<number> = [];
 
-    for (let food of calorieTotals) {
-        if (food == '') {
-            bestTotals.push(curTotal);
-            curTotal = 0;
+    for (let item of calorieTotals) {
+        if (item == '') {
+            bestTotals.push(currentTotal);
+            bestTotals = bestTotals.sort((a, b) => a - b).slice(-3);
+            currentTotal = 0;
         }
         else {
-            curTotal += parseInt(food);
+            currentTotal += parseInt(item);
         }
     }
 
-    return bestTotals.sort((a, b) => a - b);
+    return bestTotals;
 }
 
-const calorieTotals = fs.readFileSync('./2022/1/input.txt', 'utf8').split('\n');
+const calorieTotals = fs.readFileSync('./2022/1/input_example.txt', 'utf8').split('\n');
 
 console.log(getBestTotals(calorieTotals).slice(-1));
 console.log(getBestTotals(calorieTotals).slice(-3));
