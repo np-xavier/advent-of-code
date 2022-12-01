@@ -1,11 +1,12 @@
 import * as fs from 'fs';
 
-function getBestTotal(calorieTotals: Array<string>) {
-    let curTotal = 0, bestTotal = 0;
+// Thoughts - bestTotals grows into a large array as the file size increases - can we reduce?
+function getBestTotals(calorieTotals: Array<string>) {
+    let curTotal = 0, bestTotals = [];
 
     for (let food of calorieTotals) {
         if (food == '') {
-            bestTotal = curTotal > bestTotal ? curTotal : bestTotal;
+            bestTotals.push(curTotal);
             curTotal = 0;
         }
         else {
@@ -13,10 +14,10 @@ function getBestTotal(calorieTotals: Array<string>) {
         }
     }
 
-    return bestTotal;
+    return bestTotals.sort((a, b) => a - b);
 }
 
-const calorieTotals = fs.readFileSync('./2022/1/input_example.txt', 'utf8').split('\n');
+const calorieTotals = fs.readFileSync('./2022/1/input.txt', 'utf8').split('\n');
 
-console.log(calorieTotals);
-console.log(getBestTotal(calorieTotals));
+console.log(getBestTotals(calorieTotals).slice(-1));
+console.log(getBestTotals(calorieTotals).slice(-3));
