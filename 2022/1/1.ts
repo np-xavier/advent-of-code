@@ -1,22 +1,18 @@
 import * as fs from 'fs';
 
-function getBestTotals(calorieTotals: Array<string>) {
-    let currentTotal = 0, bestTotals: Array<number> = [];
+const calorieTotalStrings = fs.readFileSync('./2022/1/input.txt', 'utf8').split('\n\n').map(e => e.split('\n')); // Break down into multiarray
+const calorieTotals = calorieTotalStrings.map(e => e.map(s => parseInt(s))); // Convert entries to numbers
+
+function getBestTotals(calorieTotals: Array<Array<number>>, topCount: number) {
+    let bestTotals: Array<number> = [];
 
     for (let item of calorieTotals) {
-        if (item == '') {
-            bestTotals.push(currentTotal);
-            bestTotals = bestTotals.sort((a, b) => a - b).slice(-3);
-            currentTotal = 0;
-        }
-        else {
-            currentTotal += parseInt(item);
-        }
+        bestTotals.push(item.reduce((p, c) => p + c));
+        bestTotals = bestTotals.sort((a, b) => a - b).slice(-topCount);    
     }
 
     return bestTotals;
 }
 
-const calorieTotals = fs.readFileSync('./2022/1/input.txt', 'utf8').split('\n');
-console.log(getBestTotals(calorieTotals).slice(-1));
-console.log(getBestTotals(calorieTotals));
+console.log(getBestTotals(calorieTotals, 1));
+console.log(getBestTotals(calorieTotals, 3));
