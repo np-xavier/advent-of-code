@@ -17,6 +17,6 @@ function getBestTotals(calorieTotals: Array<string>) {
     return bestTotals;
 }
 
-const calorieTotals = fs.readFileSync('./2022/1/input_example.txt', 'utf8').split('\n');
+const calorieTotals = fs.readFileSync('./2022/1/input.txt', 'utf8').split('\n');
 console.log(getBestTotals(calorieTotals).slice(-1));
 console.log(getBestTotals(calorieTotals).slice(-3));
