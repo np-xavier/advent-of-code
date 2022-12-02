@@ -11,8 +11,8 @@ function calculateStratScore(roundStrats: Array<Array<string>>, first = true) {
         'Z': 3
     };
 
-    if (first) {
-        for (let entry of roundStrats) {
+    for (let entry of roundStrats) {
+        if (first) {
             if (entry[1] === data[entry[0]].loses) {
                 totalScore += data[entry[1]] + 6;
             }
@@ -23,9 +23,7 @@ function calculateStratScore(roundStrats: Array<Array<string>>, first = true) {
                 totalScore += data[entry[1]];
             }
         }
-    }
-    else {
-        for (let entry of roundStrats) {
+        else {
             if (entry[1] === 'Z') {
                 totalScore += data[data[entry[0]].loses] + 6;
             }
