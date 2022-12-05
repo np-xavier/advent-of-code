@@ -10,7 +10,7 @@ function calculateStratScore(roundStrats: Array<Array<string>>, first = true) {
         'Y': 2,
         'Z': 3
     };
-
+    // groupToMap??
     for (let entry of roundStrats) {
         if (first) {
             if (entry[1] === data[entry[0]].loses) {
