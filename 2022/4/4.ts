@@ -5,12 +5,18 @@ function countIntervals(sizes: any) {
     
     for (let row of sizes) {
         if (row[1][0] >= row[0][0] && row[1][1] <= row[0][1]) {
-            overlaps++;
             contained++;
+            overlaps++;
         }
         else if (row[0][0] >= row[1][0] && row[0][1] <= row[1][1]) {
-            overlaps++;
             contained++;
+            overlaps++;
+        }
+        else if (row[1][0] >= row[0][0] && row[1][0] <= row[0][1]) {
+            overlaps++;
+        }
+        else if (row[0][0] >= row[1][0] && row[0][0] <= row[1][1]) {
+            overlaps++;
         }
     }
 
@@ -20,6 +26,5 @@ function countIntervals(sizes: any) {
 const input = fs.readFileSync('./2022/4/input.txt', 'utf8').split('\n').map(x => x.split(','));
 const sizes = input.map(x => x.map(x => x.split('-').map(x => parseInt(x))));
 
-console.log(input);
-console.log(sizes);
 console.log(countIntervals(sizes)[0]);
+console.log(countIntervals(sizes)[1]);
